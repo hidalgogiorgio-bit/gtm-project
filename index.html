@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DataTrack — Misura ogni azione</title>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MJ3F5QQ6');</script>
+<!-- End Google Tag Manager —>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1a2e;
+      background: #ffffff;
+    }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 80px;
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 20px; font-weight: 700; color: #1a1a2e; text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: #64748b; text-decoration: none; font-size: 15px; }
+    .nav-cta {
+      background: #1a1a2e;
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    /* HERO */
+    .hero {
+      background: #1a1a2e;
+      padding: 100px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    .hero-text { max-width: 560px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(79,70,229,0.2);
+      color: #a5b4fc;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #94a3b8;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: #4f46e5;
+      color: #ffffff;
+      padding: 16px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #4338ca; }
+    .hero-visual {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 32px;
+      min-width: 300px;
+      text-align: center;
+    }
+    .hero-visual .metric { color: #4f46e5; font-size: 48px; font-weight: 700; }
+    .hero-visual .metric-label { color: #94a3b8; font-size: 14px; margin-top: 8px; }
+
+    /* FEATURES */
+    .features {
+      padding: 80px;
+      background: #f8fafc;
+    }
+    .features h2 {
+      font-size: 36px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .features .subtitle {
+      text-align: center;
+      color: #64748b;
+      font-size: 16px;
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .feature-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4f46e5;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+    .feature-card p { font-size: 15px; color: #64748b; line-height: 1.6; }
+
+    /* FORM SECTION */
+    .form-section {
+      background: #1a1a2e;
+      padding: 80px;
+      text-align: center;
+    }
+    .form-section h2 {
+      font-size: 40px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .form-section p {
+      color: #94a3b8;
+      font-size: 17px;
+      margin-bottom: 40px;
+    }
+    .form-wrapper {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .form-wrapper input[type="text"],
+    .form-wrapper input[type="email"] {
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
+      font-size: 15px;
+      width: 240px;
+      outline: none;
+    }
+    .form-wrapper input::placeholder { color: #64748b; }
+    .btn-submit {
+      background: #4f46e5;
+      color: #ffffff;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-submit:hover { background: #4338ca; }
+
+    /* FOOTER */
+    footer {
+      background: #0f0f1a;
+      padding: 32px 80px;
+      text-align: center;
+      color: #475569;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hero { padding: 60px 24px; flex-direction: column; }
+      .features { padding: 60px 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .form-section { padding: 60px 24px; }
+      footer { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJ3F5QQ6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="nav-logo">DataTrack</a>
+    <ul class="nav-links">
+      <li><a href="#features">Funzionalità</a></li>
+      <li><a href="#form">Contatti</a></li>
+    </ul>
+    <a href="#form" class="nav-cta">Inizia ora</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-badge">🚀 Nuovo — GTM Integration</span>
+      <h1>Misura ogni azione.<br>Ottimizza ogni risultato.</h1>
+      <p>Una piattaforma pensata per chi vuole trasformare i dati in decisioni. Traccia, analizza e ottimizza le tue campagne con precisione.</p>
+      <!-- ID cta-hero: questo bottone sarà tracciato da GTM -->
+      <a href="#form" id="cta-hero" class="btn-primary">Scopri come funziona →</a>
+    </div>
+    <div class="hero-visual">
+      <div class="metric">+247%</div>
+      <div class="metric-label">Aumento medio delle conversioni</div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <h2>Come funziona</h2>
+    <p class="subtitle">Tre passi per avere il controllo completo sui tuoi dati di marketing.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-number">01</div>
+        <h3>Installa GTM</h3>
+        <p>Aggiungi Google Tag Manager al tuo sito in pochi minuti. Nessun codice richiesto dopo il setup iniziale.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">02</div>
+        <h3>Configura gli eventi</h3>
+        <p>Definisci le azioni che contano: click sui bottoni, invii di form, scroll di pagina, acquisti.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">03</div>
+        <h3>Analizza e ottimizza</h3>
+        <p>Collega GA4, Google Ads e Meta Pixel. Tutti i tuoi dati di marketing in un unico posto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section" id="form">
+    <h2>Vuoi saperne di più?</h2>
+    <p>Lascia i tuoi dati. Ti contatteremo con una demo personalizzata.</p>
+    <form id="contact-form" action="thank-you.html" method="get">
+      <div class="form-wrapper">
+        <input type="text" name="name" placeholder="Il tuo nome" required />
+        <input type="email" name="email" placeholder="La tua email" required />
+        <!-- ID form-submit: questo bottone sarà tracciato da GTM -->
+        <button type="submit" id="form-submit" class="btn-submit">Richiedi la demo</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 DataTrack. Tutti i diritti riservati. — Progetto GTM Demo</p>
+  </footer>
+
+</body>
+</html>
